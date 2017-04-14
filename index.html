@@ -6,8 +6,8 @@
 </head>
 <body>
 <h1>Tool Box for IS4AEPs Based Systems</h1>
-<h2>A project in the labratory of inteligent systems</h2>
-<h3>The Faculty of Copmuter Science - Technion</h3>
+<h2>A project in the laboratory of intelligent systems</h2>
+<h3>The Faculty of Computer Science - Technion</h3>
 <h4>Uri Livne</h4>
 <h4>Instructor - Mr. David Dovrat</h4>
 <h4>Spring 2016</h4>
@@ -46,7 +46,7 @@
     </li>
     <li> <a href="#Ideas For Future Tools">Ideas For Future Tools</a>  	
      </li>
-     <li> <a href="#Conecpts Used In The Project">Conecpts Used In The Project</a>  	
+     <li> <a href="#Conecpts Used In The Project">Concepts Used In The Project</a>  	
      </li>
      <li> <a href="#Running Examples">Running Examples</a>
      </li>
@@ -73,7 +73,7 @@
 	<h3>Background</h3>
 	<p>IS4AEPs stands for Infrastructure Software for Asynchronous Event-driven Protocols.<br> 
 	   It is a communication library designed to provides an infrastructure for distributed, large scale, RT asynchronous systems.<br> 
-	   It was desinged and implemented by David Dovrat as from 2013, with additions by Gal Zamir and Leiran Sobih in 2016. </p>
+	   It was designed and implemented by David Dovrat as from 2013, with additions by Gal Zamir and Leiran Sobih in 2016. </p>
 	<h3>The Project Goal</h3>
 	<p>To provide tools for simulating, debugging and monitoring IS4AEPs based system</p>
 
@@ -81,8 +81,8 @@
 	<a name = "IS4AEPs In A Nutshell"></a>
 	<h2>2. IS4AEPs In A Nutshell</h2>
 	<p>The IS4AEPs library enables the user to build a communication system in any desired protocol and in any scale.<br> 
-	It allows communincation from a subrcsiber to any number of publishers, and from a publisher to any number of subscriers.<br> 
-	Furthermore, it allows to determine event-driven operations to every subrscriber in the system.</p>
+	It allows communication from a subscriber to any number of publishers, and from a publisher to any number of subscribers.<br> 
+	Furthermore, it allows to determine event-driven operations to every subscriber in the system.</p>
 	<p>The following is a top-level description of the system. for more information see project documents by Gal Zamir and Leirn Sobih in the "Docs" folder.</p>
 	<a name = "IS4AEPs contents"></a>
 	<h3>IS4AEPs contents</h3>
@@ -90,30 +90,30 @@
 	<p>IS4AEPs has 3 key elements:<br> 
        <ol type = "I">
        <li> 
-	   Message base classes - Allows creation of structerd messages, with minimal limtitations on the user.<br>
+	   Message base classes - Allows creation of structured messages, with minimal limitations on the user.<br>
 	   </li> 
 	   <li>
 	   Handler base class - Allows implementation of event-driven operations to the system subscribers.<br> 
 	   </li> 
 	   <li> 
-	   Communication components - Proxy, Dispacther, Publisher. They are the buliding blocks of the nodes in a IS4AEPs based system.<br> 
+	   Communication components - Proxy, Dispacther, Publisher. They are the building blocks of the nodes in a IS4AEPs based system.<br> 
 	   </li> 
 	   </ol>
-	 <p>A Closer look on IS4AEPs elemetns :</p>
+	 <p>A Closer look on IS4AEPs elements :</p>
 	 <p>Base Message - an Abstract-Base-Class for message header. Contains <i>timestamp</i> and ,<i>topic</i> only.</p>
 	 <p>Message Property Tree - an Abstract-Base-Class for message body. Provides an interface to build a message in structured format.<br>
-	    determines the message body attributes and data types. currentley XML or Json.</p>
+	    determines the message body attributes and data types. currently XML or Json.</p>
 	 <p><em>Important Note #1 - the meaning of topic: messages with same Topic have the same structure and attributes.</em></p>
 	 <p>Handler – an Abstract-Base-Class for message handler. provides an interface to process a messages with a specific <i>Topic</i>.<br>
-	 Determines the node beahviour when a message is reicived.
+	 Determines the node behavior when a message is received.
 	 </p>
-	 <p><em>Important Note #2 - IS4AEPs provides a <i>Service Topic Message</i> and <i>Srvice Topic Handler</i> Implementation.<br>
+	 <p><em>Important Note #2 - IS4AEPs provides a <i>Service Topic Message</i> and <i>Service Topic Handler</i> Implementation.<br>
 	  This allows control over system nodes, which is a need for any system.</em></p>
 	 <p>Proxy - The proxy is the main router of the system. <br>
 	 Every node at the system is connected to it, and besides transferring messages, it also logs every message. <br>
 	 Each proxy has three sockets which are connected to it: <br>
 	 <ol>
-		<li>Proxy frontend- Each publisher connects to that socket and publish data through this socket. </li>
+		<li>Proxy frontend- Each publisher connects to that socket and publishes data through this socket. </li>
 		<li>Proxy backend- Each subscriber connects to that socket and gets data from this socket. </li>
 		<li>Proxy log- All the data which go through the proxy is sent to this socket for further work, log the data or just ignore it. </li>
 	</ol>
@@ -123,7 +123,7 @@
 	</p> 
 	<p>Dispacther - The dispatcher is the heart of the IS4AEPs library. <br>
     Each node should have a dispatcher, which allows the node to send or receive messages.<br>	   
-    The dispacther runs a loop in which it waits for an incoming message. upon message reiciving, it activates message handler based on incoming message topic.<br>
+    The dispacther runs a loop in which it waits for an incoming message. upon message receiving, it activates message handler based on incoming message topic.<br>
     The dispathcer has mapping of topics to message handlers.<br>
     The dispacther has a list of publishers which allows it to send messages.<br>
 	</p> 
@@ -133,22 +133,23 @@
 	
 	<ol>
 		<li>Implement system node classes based on <i>Dispatcher</i> and\or <i>Publisher</i> components.<br>		
-		In order to use <i>Dispatcher\Publisher</i> add "#include <Dispatcher.h>" to the node implementation.<br>
-		The <i>Dispatcher</i> interface already inclues <i>Publisher</i> interface.
+		In order to use <i>Dispatcher\Publisher</i>, include <i>Dispatcher.h</i> in the node implementation.<br>
+		The <i>Dispatcher</i> interface already includes <i>Publisher</i> interface.
 		</li>
 		<li>Inherit form the base classes and implement Message and Handler according to system needs.</li>
 		<li>Assign Proxy(ies)  according to system needs.<br>
-		It is strongley recomended to assign a service proxy for easier control over system nodes in debugging proccess and operationl use.
+		It is strongly recommended to assign a service proxy for easier control over system nodes in debugging process and operational use.
 		</li>
 		<li>Keep node ID convention – each node in the system must have a unique ID. 
 		</li>
-		<li>implement a main lacuncher which activates at least the system proxies.<br>
+		<li>implement a main launcher which activates at least the system proxies.<br>
 		Afterwards any compatible node can be added or removed from the system at any time, according to the user's needs.</li>
-		<p><em>Important Note #3 - Assigining proxies endpoints and nodes ID's can be easly done with <i>Cmake</i> tool.</em><br>
-		See Installation Guide at the end of the documenation.
+		<p><em>Important Note #3 - Assigning proxies endpoints and nodes ID's can be easily done with <i>Cmake</i> tool. 
+		See Installation Guide at the end of the documentation.</em><br>
+		
 	</ol>
 	<a name = "Example"></a>
-	<p>Example of message after implmentation of messages abstract-base-classes: </p>
+	<p>Example of message after implementation of messages abstract-base-classes: </p>
 	<img src="Images/MessageExample.jpg" alt="Message Example" style="width:720px; height:100px;" ">
 	<p>UML Example of an implemented IS4AEPs based system:</p>
 	<img src="Images/IS4AEPS Based Example.jpg" alt="IS4AEPs Based Example" style="width:512px; height:320px;" ">
@@ -168,7 +169,7 @@
 	</p>
 	<p>Modularity – each tool has a value as a standalone, and the tools can be used together for increased value.
 	</p>
-	<h3>Tools descriptions and use cases: (running exampels are <a href="#Running Examples"> here</a> )</h3>
+	<h3>Tools descriptions and use cases: (running examples are <a href="#Running Examples"> here</a> )</h3>
 	<a name = "DT"></a>
 	<h3>DT</h3>
 	<H4>DT Description</H4>
@@ -231,7 +232,7 @@
 	<li>Unlimited re-playing of live mission in user controlled environment</li>
 	<li>speed-up low traffic systems simulation and slow-down high traffic systems simulation (time resolution- 1 mls) </li>
 	<li>Re-playing of specific Topics given by the user, by adjusting &lsaquo; proxy configuration &rsaquo; parameter </li>
-	<li>Testing nodes under development with real mission data, supllied through &lsaquo; looger output sql file &rsaquo; parameter</li>
+	<li>Testing nodes under development with real mission data, supplied through &lsaquo; logger output sql file &rsaquo; parameter</li>
 	</ul>
 	<p>Replayer Class Diagram :</p>
 	<img src="Images/Replayer.png" alt="Replayer" style="width:512px; height:384px;" ">
@@ -243,18 +244,18 @@
 	<ul>
 		<li>Accumulates data from specific attributes of specific topics given by the user</li>
 		<li>Implemented as an IS4AEPs based component : <br>
-			-Implemeted in C++ <br>
+			-Implemented in C++ <br>
 			-Based on Dispatcher <br>
 			-Implements <i>AnalyzerMessage</i> and <i>AnalyzerHandler</i> classes  
 		</li>		
 	</ul>
 	<H4>Analyzer Sub-Classes</H4>
-	<p>Analyzer currentley is the most complexed tool in box.<br>
+	<p>Analyzer currently is the most complexed tool in box.<br>
 	   It's functionality is being implemented using several classes : 
 	<p>
 	<ul>
 		<li><i>AnalyzerHandler</i> - extracts the data from incoming messages and stores it in <i>TopicStatisitcs</i><br></li>
-			Inheirats from <i>Handler</i> Base Class
+			Inherits from <i>Handler</i> Base Class
 		<li><i>TopicStatistics</i> – a data structure which accumulates the data from each requested <i>topic</i></li>
 		<li><i>AnalyzerInterface</i> – used as a delegate to avoid circular include between <i>Analyzer</i> and <i>AnalyzerHandler</i> Classes</li>
 	</ul>
@@ -265,7 +266,7 @@
 	<ul>
 		<li>The function is determined by the implementation of <i>TopicStatistics</i> Class</li>
 		<li>Data is published when all <i>topics</i> have passed incoming message threshold - <br>
-		    a minimum number of messages from each <i>topic</i> hase been recived </li>
+		    a minimum number of messages from each <i>topic</i> has been received </li>
 	</ul>
 	<H4>Analyzer Use Cases</H4>
 	<ul>
@@ -284,12 +285,12 @@
 	<ul>
 		<li>Creates live charts of data received from a requested <i>topic</i> </li>
 		<li>Simple GUI</li>
-		<li>GUI events and data collection run on seperate, synchronized threads.</li>
-		<li>Two chart ploting methods for user choice: <br>
-		- multiple time depndent plots on same chart (currnelty supports of to 7 different plots)<br>
-		- ploting two data sources in XY chart
+		<li>GUI events and data collection run on separate, synchronized threads.</li>
+		<li>Two chart plotting methods for user choice: <br>
+		- multiple time dependent plots on same chart (currently supports of to 7 different plots)<br>
+		- plotting two data sources in XY chart
 		</li>
-		<li>Export received data to CSV file for further analisys</li>
+		<li>Export received data to CSV file for further analysis</li>
 		<li>Implemented in Python with ZMQ</li>
 	</ul>
 	<p>Time Dependent chart:
@@ -304,7 +305,7 @@
 		<li>Main use case - combining with <i>Analyzer</i> : <br>
 		<ol>
 			<li>Combine data from several nodes to one message with several attributes using <i>Analyzer</i></li>
-			<li>From the visualizer subscrive to <i>Analyzer</i>'s topic and capture the combined data</li>
+			<li>From the visualizer subscribe to <i>Analyzer</i>'s topic and capture the combined data</li>
 			<li>Plot the combined data in one chart</li>
 		</ol>
 		<p><em>Important note - steps 2 and 3 are performed automatically by the <i>Visualizer</i>, once the user launched it</em></p>
@@ -323,33 +324,33 @@
 	<p> The modularity of IS4AEPs Tool Box allows adding new tools easily.</p>
 	<ul>
 		<li>Watch Dog tool - to monitor system nodes and alert on dead/idle nodes</li>
-		<li>GUI for system layout design - allow intuative system layout desing and configuration : <br>
-			connecting between nodes, proxies and Tool Box compentes, and configuring their paramters in GUI rather than editing files </li>
-		<li>Add Analyzer functions - add mathematical\statistical accumlators such as transforms or filters</li>
+		<li>GUI for system layout design - allow intuitive system layout design and configuration : <br>
+			connecting between nodes, proxies and Tool Box components, and configuring their parameters in GUI rather than editing files </li>
+		<li>Add Analyzer functions - add mathematical\statistical accumulators such as transforms or filters</li>
 	</ul> 
 
 <section></section>
 	<a name = "Conecpts Used In The Project"></a>
-	<h2>5. Conecpts Used In The Project</h2>
+	<h2>5. Concepts Used In The Project</h2>
 	<p> During the work on the project i have used the following tools and programming libraries : <br>
 	<ul>
 		<li>Cmake - easy compile configuration tool. used both for IS4AEPs installation and IS4AEPs based system compilation </li>
 		<li>Boost, std and ZeroMq libraries</li>
 	</ul>
 	</p>
-	<p>I have learnd and practiced the following desng-patterns:</p>
+	<p>I have learned and practiced the following design-patterns:</p>
 	<ul>
 		<li>Observer - Analyzer \ Dispathcer and Publisher </li>
 		<li>Model-View-Controller - Visualizer </li>
 	</ul>
-	<p>I have practiced desinging and impleneting tools according to user defintions, orieneted to provide develpoment and debugging needs.</p>
-	<p>I have combined programing in several fileds - Data Stuctures, Communication , Data Bases</p>
+	<p>I have practiced designing and implementing tools according to user definitions, oriented to provide development and debugging needs.</p>
+	<p>I have combined programing in several fields - Data Structures, Communication , Data Bases</p>
 
 <section></section>
 <a name = "Running Examples"></a>
 <h2>6. Running Examples</h2>
 <H4>DT</H4>
-<p>./dt.py &lsaquo; command &rsaquo; &lsaquo; nodes &rsaquo;  &lsaquo; serivce proxy front endpoint &rsaquo;<br>
+<p>./dt.py &lsaquo; command &rsaquo; &lsaquo; nodes &rsaquo;  &lsaquo; service proxy front endpoint &rsaquo;<br>
 Example:<br>
 ./dt.py terminate 1 ipc:///temp/serivceProxy_in.ipc </p>
 <H4>Logger</H4>
@@ -357,7 +358,7 @@ Example:<br>
 Example:<br>
 ./logger.py ipc:///tmp/proxy1_log.ipc ipc:///tmp/proxy2_log.ipc"
 <H4>Replayer</H4>
-<p>./Replay.py &lsaquo; looger output sql file &rsaquo; &lsaquo; simulation rate &rsaquo; &lsaquo; proxy configuration &rsaquo; <br> 
+<p>./Replay.py &lsaquo; logger output sql file &rsaquo; &lsaquo; simulation rate &rsaquo; &lsaquo; proxy configuration &rsaquo; <br> 
 Proxy configuration parameter can be one of the below : <br>
 Single proxy endpoint - in this case all simulated messages will be sent to that proxy<br>
 CSV format file of prxoy-topic mapping - in this case each topic is assigned to endopint. example for CSV proxy-topic mapping :<br>  
@@ -370,7 +371,7 @@ Or:<br>
 <H4>Analyzer</H4>
 <p>Launched with exe file<br>
 ./analyzer &lsaquo;inputFile.csv&rsaquo;<br>
-input csv file hase the follwoing format:<br>
+input csv file has the following format:<br>
 proxy,&lsaquo; proxy front endpoint &rsaquo;<br>
 serviceProxy,&lsaquo; proxy back endpoint &rsaquo; <br>
 topicsAndFields,&lsaquo; topic1,field1,...filedM,topic2,filed1,...TopicN,filed1... &rsaquo; <br>
@@ -393,25 +394,25 @@ Example:<br>
 <ul>
 	<li>IS4AEPs Dependencies</li>
 	<li>Python 2.7.X</li>
-	<li>matplotloib python package - in case not already included in Python insatllaion</li>
+	<li>matplotloib python package - in case not already included in Python installation</li>
 	<li>pyzmq python package</li>
 </ul>
 <a name = "The Cmake Tool for compiling and configuring SW projects"></a>
 
 <h3>The Cmake Tool for compiling and configuring SW projects</h3>
-<p>Cmake is a tool which provieds a GUI for easy compliation and configuration of software projects.<br>
-when given a source code path, it creates ready-to-build binaries, while linking libraries and dependecies if needed.<br>
-The user only needs to run compile and install commands (on a linux machine. for other OS see online Cmake documantion).<br>
+<p>Cmake is a tool which provides a GUI for easy compilation and configuration of software projects.<br>
+when given a source code path, it creates ready-to-build binaries, while linking libraries and dependencies if needed.<br>
+The user only needs to run compile and install commands (on a linux machine. for other OS see online Cmake documentation).<br>
 Cmake requires a <i>CMakeLists.txt</i> file to be present in every source code folder.<br>
 <i>CMakeLists.txt</i> determines the different compile and configurtaion options, relevant to source code in it's folder.<br>
 The user should edit the file according to it;s needs, then activate Cmake.</p>
 <a name = "IS4AEPS Library Compilation and Installation"></a>
 <H3>IS4AEPS Library Compilation and Installation <H3>
-<p>Compiling and installing IS4AEPs and the Tool Box is intuative with Cmake.<br>
+<p>Compiling and installing IS4AEPs and the Tool Box is intuitive with Cmake.<br>
 <ol>
-<li>Inserst IS4AEPs source code path and desired binary files path in the top of Cmake GUI:</li>
+<li>Inserts IS4AEPs source code path and desired binary files path in the top of Cmake GUI:</li>
 <img src="Images/Cmake_browse.png" alt="Cmake_browse" style="width:960px; height:128px;" ">
-<li>In the main window, adujst the configuration to your needs - installtaion and dependencies path , etc..:</li>
+<li>In the main window, adujst the configuration to your needs - installation and dependencies path , etc..:</li>
 <img src="Images/Cmake_Configure.png" alt="Cmake_Configure" style="width:960px; height:512px;" ">
 <li>Press <i>Configure</i> button on the bottom left corner to verify new configuration is correct</li>
 <li>If there are errors in the configuration they will be reported in the Cmake console. <br>
@@ -419,7 +420,7 @@ fix the errors and configure until the main window is white</li>
 <li>Press <i>Generate</i> button on the bottom left corner to generate ready-to-build binaries </li>
 <li>In the binaries folder, run <i>make</i> or <i>make install</i> commands to compile and install</li>
 </ol></p>
-<p><em>Important Note: Adding or changing IS4AEPs componentes only reqiures changes in the appropiate <i>CMakeLists.txt</i> files.</em> </p>
+<p><em>Important Note: Adding or changing IS4AEPs components only require changes in the appropriate <i>CMakeLists.txt</i> files.</em> </p>
 <p>See Cmake online documentation for <i>CMakeLists.txt</i> file options.<br>
 Looking at the current project <i>CMakeLists.txt</i> files will also help</p>
 <a name = "Example of Configuring and Compiling IS4AEPS Based System with Cmake"></a>
@@ -427,9 +428,9 @@ Looking at the current project <i>CMakeLists.txt</i> files will also help</p>
 <h3>Example of Configuring and Compiling IS4AEPS Based System with Cmake</h3>
 <p>An example is given to show the power of Cmake tool.</p>
 <p>Given an IS4AEPS based system which has 2 implemented node types ("Chatter" and "Listener"), and requires 3 proxies,<br>
-by configuring correclly the <i>CMakeLists.txt</i> files we can easly determine the proxies endpoints and node ID's,<br>
-thus allowing flexebilty for the project (no need to hard code or request from the user).<br>
-In addtion, linikng to IS4AEPs library and setting install path are trivial : </p>
+by configuring correctly the <i>CMakeLists.txt</i> files we can easly determine the proxies endpoints and node ID's,<br>
+thus allowing flexibility for the project (no need to hard code or request from the user).<br>
+In addition, linking to IS4AEPs library and setting install path are trivial : </p>
 <img src="Images/Cmake_exmapleProject.png" alt="Cmake_exmapleProject" style="width:1100px; height:512px;" ">
 </body>
 </html>
